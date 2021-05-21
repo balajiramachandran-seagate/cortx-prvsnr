@@ -20,12 +20,19 @@
 network:
   config:
     NetworkConfig
+
 node:
   initialize:
     NodeInitalize
   prepare:
     firewall:
       NodePrepareFirewall
+
+signature:
+  get:
+    GetSignature
+  set:
+    SetSignature
+
 hostname:
   Hostname
-   

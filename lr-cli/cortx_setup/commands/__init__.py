@@ -19,11 +19,15 @@ from .hostname import Hostname
 from .network.config import NetworkConfig
 from .node.initialize import NodeInitalize
 from .node.prepare.firewall import NodePrepareFirewall
+from .signature.get import GetSignature
+from .signature.set import SetSignature
 
 
 __all__ = [
     'Hostname',
     'NetworkConfig',
     'NodeInitalize',
-    'NodePrepareFirewall'
- ]
+    'NodePrepareFirewall',
+    'GetSignature',
+    'SetSignature'
+]
