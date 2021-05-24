@@ -14,17 +14,36 @@
 # For any questions about this software or licensing,
 # please email opensource@seagate.com or cortx-questions@seagate.com.
 #
+import logging
+from typing import Type
 
-from .set_swupgrade_repo import SetSWUpgradeRepo
-from .sw_upgrade import SWUpgrade
-from .remove_swupgrade_repo import RemoveSWUpgradeRepo
+from packaging import version
+from provisioner import inputs
+from provisioner.config import (CORTX_ISO_DIR, REPO_CANDIDATE_NAME,
+                                SWUpgradeInfoFields)
+from provisioner.pillar import PillarResolver, PillarKey
+
+from provisioner.salt import local_minion_id, cmd_run
+from provisioner.commands import CommandParserFillerMixin
+from provisioner.vendor import attr
+
 from .get_swupgrade_info import GetSWUpgradeInfo
-from .get_iso_version import GetISOVersion
 
-__all__ = [
-    "SetSWUpgradeRepo",
-    "SWUpgrade",
-    "RemoveSWUpgradeRepo",
-    "GetSWUpgradeInfo",
-    "GetISOVersion"
-]
+from ...commands import GetReleaseVersion
+
+
+logger = logging.getLogger(__name__)
+
+
+class GetISOVersion(CommandParserFillerMixin):
+    """
+    Base class that provides API for getting ISO Version information.
+    """
+
+    input_type: Type[inputs.NoParams] = inputs.NoParams
+
+    def run(self, targets):
+        #release_upgrade = GetSWUpgradeInfo()
+
+        release_current  = GetReleaseVersion()
+

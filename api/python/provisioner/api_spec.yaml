@@ -127,6 +127,8 @@ sw_upgrade:
   type: upgrade.SWUpgrade
 get_swupgrade_info:
   type: upgrade.GetSWUpgradeInfo
+get_iso_version:
+  type: upgrade.GetISOVersion
 fw_update:
   type: FWUpdate
 sw_rollback:

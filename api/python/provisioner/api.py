@@ -409,6 +409,24 @@ def get_swupgrade_info(release: str = None, nowait=False):
     """
     return _api_call('get_swupgrade_info', release=release, nowait=nowait)
 
+def get_iso_version(release: str = None, nowait=False):
+    """
+    Return latest available ISO version.
+
+    Parameters
+    ----------
+    release:
+        (optional) SW Upgrade repository release version
+    nowait: bool
+        (optional) Run asynchronously. Default: False
+
+    Returns
+    -------
+    None
+
+    """
+    return _api_call('get_iso_version', release=release, nowait=nowait)
+
 
 def fw_update(source, dry_run=False, nowait=False):
     r"""Runs firmware update logic.
