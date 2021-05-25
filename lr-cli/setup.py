@@ -38,7 +38,10 @@ setup(
         'cortx_setup',
         'cortx_setup.commands',
         'cortx_setup.commands.network',
-        'cortx_setup.commands.node'
+        'cortx_setup.commands.node',
+        'cortx_setup.commands.storageset',
+        'cortx_setup.commands.storageset.add',
+        'cortx_setup.commands.storageset.config'
     ],
     package_dir={'cortx_setup': 'cortx_setup'},
     include_package_data=True,

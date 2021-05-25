@@ -20,9 +20,20 @@
 network:
   config:
     NetworkConfig
+
 node:
   initialize:
     NodeInitalize
+
 hostname:
   Hostname
-   
+
+storageset:
+  create:
+    CreateStorageSet
+  add:
+    node:
+      AddServerNode
+  config:
+    durability:
+      DurabilityConfig

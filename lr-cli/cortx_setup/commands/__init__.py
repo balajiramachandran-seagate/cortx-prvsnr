@@ -18,10 +18,16 @@
 from .hostname import Hostname
 from .network.config import NetworkConfig
 from .node.initialize import NodeInitalize
+from .storageset.create import CreateStorageSet
+from .storageset.add.node import AddServerNode
+from .storageset.config.durability import DurabilityConfig
 
 
 __all__ = [
     'Hostname',
     'NetworkConfig',
-    'NodeInitalize'
- ]
+    'NodeInitalize',
+    'CreateStorageSet',
+    'AddServerNode',
+    'DurabilityConfig'
+]
