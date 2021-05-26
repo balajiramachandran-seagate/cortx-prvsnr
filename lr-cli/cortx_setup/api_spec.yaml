@@ -23,6 +23,9 @@ network:
 node:
   initialize:
     NodeInitalize
+  prepare:
+    network:
+      NodePrepareNetwork
 hostname:
   Hostname
    

@@ -15,15 +15,9 @@
 # please email opensource@seagate.com or cortx-questions@seagate.com.
 #
 
-from .hostname import Hostname
-from .network.config import NetworkConfig
-from .node.initialize import NodeInitalize
-from .node.prepare.network import NodePrepareNetwork
 
+from pathlib import Path
 
-__all__ = [
-    'Hostname',
-    'NetworkConfig',
-    'NodeInitalize',
-    'NodePrepareNetwork'
- ]
+PRVSNR_CLUSTER_CONFSTORE = Path(
+    '/opt/seagate/cortx_configs/provisioner_cluster.json'
+)

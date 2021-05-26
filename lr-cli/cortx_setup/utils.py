@@ -15,15 +15,14 @@
 # please email opensource@seagate.com or cortx-questions@seagate.com.
 #
 
-from .hostname import Hostname
-from .network.config import NetworkConfig
-from .node.initialize import NodeInitalize
-from .node.prepare.network import NodePrepareNetwork
 
+from provisioner.salt import function_run
 
-__all__ = [
-    'Hostname',
-    'NetworkConfig',
-    'NodeInitalize',
-    'NodePrepareNetwork'
- ]
+def get_machine_id(target):
+    try:
+        result = function_run('grains.get', fun_args=['machine_id'],
+                            targets=target)
+        machine_id = result[f'{target}']
+    except Exception as exc:
+        raise exc
+    return machine_id
