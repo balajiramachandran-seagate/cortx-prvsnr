@@ -15,15 +15,12 @@
 # please email opensource@seagate.com or cortx-questions@seagate.com.
 #
 
-from pathlib import Path
 from ..command import Command
+from cortx_setup.config import CONFSTORE_CLUSTER_FILE
+
 from cortx.utils.conf_store import Conf
 from provisioner.commands import PillarSet
 from provisioner.salt import local_minion_id, function_run
-
-prvsnr_cluster_path = Path(
-    '/opt/seagate/cortx_configs/provisioner_cluster.json'
-)
 
 
 """Cortx Setup API for configuring network"""
@@ -81,7 +78,7 @@ class NetworkConfig(Command):
         machine_id = self.get_machine_id(targets=node_id)
         Conf.load(
             'node_info_index',
-            f'json://{prvsnr_cluster_path}'
+            f'json://{CONFSTORE_CLUSTER_FILE}'
         )
 
         if transport_type is not None:
