@@ -31,6 +31,7 @@ from .get_swupgrade_info import GetSWUpgradeInfo
 
 from ...commands import GetReleaseVersion
 
+from packaging import version
 
 logger = logging.getLogger(__name__)
 
@@ -45,5 +46,27 @@ class GetISOVersion(CommandParserFillerMixin):
     def run(self, targets):
         #release_upgrade = GetSWUpgradeInfo()
 
-        release_current  = GetReleaseVersion()
+        #release_current  = GetReleaseVersion()
+
+        upgrade_data = GetSWUpgradeInfo()
+        release_metadata = GetReleaseVersion()
+        upgrade_ver = (
+            f'{upgrade_data['metadata'][ReleaseInfo.VERSION.value]}-'
+            f'{upgrade_data['metadata'][ReleaseInfo.BUILD.value]}'
+        )
+        release_ver = (
+            f'{release_metadata[ReleaseInfo.VERSION.value]}-'
+            f'{release_metadata[ReleaseInfo.BUILD.value]}'
+        )
+        release_ver = version.parse(release_ver)
+        upgrade_ver = version.parse(upgrade_ver)
+        if upgrade_ver > release_ver:
+            return str(upgrade_ver)
+        elif upgrade_ver == release_ver:
+            return None
+        else:  # upgrade_ver < release_ver
+            raise ProvisionerError(
+                "upgrade version is lower than currently installed one"
+            )
+
 
