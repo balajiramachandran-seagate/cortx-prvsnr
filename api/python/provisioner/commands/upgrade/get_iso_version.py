@@ -51,8 +51,8 @@ class GetISOVersion(CommandParserFillerMixin):
         upgrade_data = GetSWUpgradeInfo()
         release_metadata = GetReleaseVersion()
         upgrade_ver = (
-            f'{upgrade_data['metadata'][ReleaseInfo.VERSION.value]}-'
-            f'{upgrade_data['metadata'][ReleaseInfo.BUILD.value]}'
+            f'{upgrade_data["metadata"][ReleaseInfo.VERSION.value]}-'
+            f'{upgrade_data["metadata"][ReleaseInfo.BUILD.value]}'
         )
         release_ver = (
             f'{release_metadata[ReleaseInfo.VERSION.value]}-'
