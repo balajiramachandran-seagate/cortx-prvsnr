@@ -44,20 +44,19 @@ class GetISOVersion(CommandParserFillerMixin):
     input_type: Type[inputs.NoParams] = inputs.NoParams
 
     def run(self, targets):
-        #release_upgrade = GetSWUpgradeInfo()
 
-        #release_current  = GetReleaseVersion()
-
-        upgrade_data = GetSWUpgradeInfo()
+        get_swupgrade_info = GetSWUpgradeInfo()
+        upgrade_data = get_swupgrade_info.run()
         release_metadata = GetReleaseVersion()
         upgrade_ver = (
-            f'{upgrade_data["metadata"][ReleaseInfo.VERSION.value]}-'
-            f'{upgrade_data["metadata"][ReleaseInfo.BUILD.value]}'
+            f'{upgrade_data.metadata[ReleaseInfo.VERSION.value]}-'
+            f'{upgrade_data.metadata[ReleaseInfo.BUILD.value]}'
         )
         release_ver = (
             f'{release_metadata[ReleaseInfo.VERSION.value]}-'
             f'{release_metadata[ReleaseInfo.BUILD.value]}'
         )
+
         release_ver = version.parse(release_ver)
         upgrade_ver = version.parse(upgrade_ver)
         if upgrade_ver > release_ver:
