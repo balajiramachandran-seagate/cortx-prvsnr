@@ -686,4 +686,4 @@ def set_private_data_network(local=False, **kwargs):
 
     :return:
     """
-    return _api_call('set_public_data_network', local=local, **kwargs)
+    return _api_call('set_private_data_network', local=local, **kwargs)
