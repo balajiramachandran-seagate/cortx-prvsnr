@@ -238,7 +238,6 @@ class DestroyNode(Deploy):
                     self._apply_states(state, primary)
 
                 elif state in (
-                    "ha.cortx-ha.teardown",
                     "sspl.teardown"
                 ):
                     logger.info(f"Applying '{state}' on {primary}")
@@ -263,6 +262,10 @@ class DestroyNode(Deploy):
         run_args = self._run_args_type(**kwargs)
         temp_dir = config.PRVSNR_TMP_DIR
         temp_dir.mkdir(parents=True, exist_ok=True)
+
+        # hide cache logs for salt-ssh
+        salt_logger = logging.getLogger('salt.fileclient')
+        salt_logger.setLevel(logging.WARNING)
 
         salt_config_master = str(
             '/etc/salt/master'
