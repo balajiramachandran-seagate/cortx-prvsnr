@@ -15,9 +15,17 @@
 ## please email opensource@seagate.com or cortx-questions@seagate.com.
 ##
 #
+
+
 network:
   config:
     NetworkConfig
+node:
+  initialize:
+    NodeInitalize
+  prepare:
+    firewall:
+      NodePrepareFirewall
 hostname:
   Hostname
    

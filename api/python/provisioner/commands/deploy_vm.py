@@ -120,7 +120,6 @@ class DeployVM(Deploy):
                 #       for legacy dual node setup
                 if state in (
                     "sspl",
-                    "ha.cortx-ha"
                 ):
                     # Execute first on secondaries then on primary.
                     self._apply_state(
