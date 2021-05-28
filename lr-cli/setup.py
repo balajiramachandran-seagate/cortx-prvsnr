@@ -39,7 +39,7 @@ setup(
         'cortx_setup.commands',
         'cortx_setup.commands.network',
         'cortx_setup.commands.node',
-        'cortx_setup.commands.node.prepare'
+        'cortx_setup.commands.node.prepare',
         'cortx_setup.commands.signature'
     ],
     package_dir={'cortx_setup': 'cortx_setup'},
